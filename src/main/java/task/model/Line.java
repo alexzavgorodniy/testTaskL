@@ -1,26 +1,35 @@
-package parsing.model;
+package task.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "line")
 public class Line {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "longest_word")
     private Integer longestWord;
 
+    @Column(name = "shortest_word")
     private Integer shortestWord;
 
+    @Column(name = "line_length")
     private Integer lineLength;
 
+    @Column(name = "average_word_length")
     private Integer averageWordLength;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

@@ -1,4 +1,4 @@
-package parsing.configJDBC;
+package task.configJDBC;
 
 public enum Props {
     DRIVER("db.driver"),

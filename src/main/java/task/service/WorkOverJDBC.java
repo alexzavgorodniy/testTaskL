@@ -1,4 +1,4 @@
-package parsing.service;
+package task.service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,14 +8,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import org.h2.tools.RunScript;
-import parsing.configJDBC.Configuration;
-import parsing.model.Line;
+import task.configJDBC.Configuration;
+import task.model.Line;
 
-public class JDBC {
+public class WorkOverJDBC {
 
     private ParseTextFile parseTextFile = new ParseTextFile();
 
-    public void db() {
+    public void dbConnection() {
         Configuration config = Configuration.getInstance();
         try {
             Class.forName(config.driver());

@@ -1,6 +1,6 @@
-package parsing.service;
+package task.service;
 
-import parsing.model.Line;
+import task.model.Line;
 
 class LineStat {
 

@@ -1,4 +1,4 @@
-package parsing.configJDBC;
+package task.configJDBC;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +27,7 @@ public final class Configuration {
         return getInstance(null);
     }
 
-    public static Configuration getInstance(String fileName) {
+    private static Configuration getInstance(String fileName) {
         if (instance == null) {
             instance = new Configuration(fileName);
         }
