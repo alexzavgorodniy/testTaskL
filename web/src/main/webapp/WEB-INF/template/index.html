@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>File reading application</title>
+  <link rel="shortcut icon" type="image/x-icon" th:href="@{/static/img/favicon.ico}"/>
+  <link rel="stylesheet" th:href="@{/static/css/reset.css}">
+  <link rel="stylesheet" th:href="@{/static/lib/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/static/lib/font-awesome/css/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{/static/css/style.css}">
+</head>
+<body class="wrapper">
+<header class="header">
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Number by order</th>
+          <th>Line from file</th>
+          <th>Longest word</th>
+          <th>Shortest word</th>
+          <th>Line length</th>
+          <th>Average word length</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr th:each="lineDto : ${lineDtos}">
+        <td th:text="${linesDto.id}"></td>
+        <td th:text="${linesDto.title}"></td>
+        <td th:text="${linesDto.longestWord}"></td>
+        <td th:text="${linesDto.shortestWord}"></td>
+        <td th:text="${linesDto.lineLength}"></td>
+        <td th:text="${linesDto.averageWordLength}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+</header>
+
+<script th:src="@{/static/lib/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/static/lib/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
