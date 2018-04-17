@@ -9,7 +9,7 @@ import task.dao.DaoFactory;
 import task.exception.DaoException;
 import task.model.Line;
 
-public class DaoFactoryJdbcImpl implements DaoFactory<Connection> {
+public final class DaoFactoryJdbcImpl implements DaoFactory<Connection> {
 
     private static DaoFactoryJdbcImpl instance;
 

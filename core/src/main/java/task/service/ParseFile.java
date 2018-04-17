@@ -10,7 +10,7 @@ public class ParseFile {
 
     public List<Line> openFile() {
         String line;
-        String path = "./sonet.txt";
+        String path = "sonet.txt";
         List<Line> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             while ((line = reader.readLine()) != null) {

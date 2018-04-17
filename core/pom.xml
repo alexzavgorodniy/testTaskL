@@ -9,9 +9,16 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
+  <groupId>com.luxoft.testTaskL</groupId>
   <artifactId>core</artifactId>
 
   <packaging>jar</packaging>
+
+  <name>${project.parent.artifactId}::${project.artifactId}</name>
+
+  <properties>
+    <rootDir>${project.parent.basedir}</rootDir>
+  </properties>
 
   <dependencies>
     <dependency>

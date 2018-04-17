@@ -6,7 +6,7 @@ import task.dao.EntityDao;
 import task.dao.DaoFactory;
 import task.model.Line;
 
-public class DaoFactoryHiberImpl implements DaoFactory<SessionFactory> {
+public final class DaoFactoryHiberImpl implements DaoFactory<SessionFactory> {
 
     private static final SessionFactory factory = new Configuration().configure().buildSessionFactory();
 

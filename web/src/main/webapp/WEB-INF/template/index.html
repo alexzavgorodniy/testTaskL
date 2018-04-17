@@ -26,12 +26,12 @@
       </thead>
       <tbody>
       <tr th:each="lineDto : ${lineDtos}">
-        <td th:text="${linesDto.id}"></td>
-        <td th:text="${linesDto.title}"></td>
-        <td th:text="${linesDto.longestWord}"></td>
-        <td th:text="${linesDto.shortestWord}"></td>
-        <td th:text="${linesDto.lineLength}"></td>
-        <td th:text="${linesDto.averageWordLength}"></td>
+        <td th:text="${lineDto.id}"></td>
+        <td th:text="${lineDto.title}"></td>
+        <td th:text="${lineDto.longestWord}"></td>
+        <td th:text="${lineDto.shortestWord}"></td>
+        <td th:text="${lineDto.lineLength}"></td>
+        <td th:text="${lineDto.averageWordLength}"></td>
       </tr>
       </tbody>
     </table>

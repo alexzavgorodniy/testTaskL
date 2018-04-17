@@ -1,6 +1,6 @@
 package task.dto;
 
-public class LinesDto {
+public class LineDto {
 
     private Integer id;
 
