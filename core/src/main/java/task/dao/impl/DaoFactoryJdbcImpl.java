@@ -3,23 +3,19 @@ package task.dao.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import task.configJDBC.Config;
-import task.dao.DaoFactory;
 import task.dao.EntityDao;
+import task.dao.DaoFactory;
 import task.exception.DaoException;
 import task.model.Line;
 
-public final class DaoFactoryImpl implements DaoFactory {
+public class DaoFactoryJdbcImpl implements DaoFactory<Connection> {
 
-    private static DaoFactoryImpl instance;
-
-    private final SessionFactory factory = new Configuration().configure().buildSessionFactory();
+    private static DaoFactoryJdbcImpl instance;
 
     private EntityDao<Line> lineEntityDao;
 
-    private DaoFactoryImpl() {
+    private DaoFactoryJdbcImpl() {
         try {
             Class.forName(Config.getInstance().driver());
         } catch (ClassNotFoundException e) {
@@ -27,9 +23,9 @@ public final class DaoFactoryImpl implements DaoFactory {
         }
     }
 
-    public static DaoFactoryImpl getInstance() {
+    public static DaoFactoryJdbcImpl getInstance() {
         if (instance == null) {
-            instance = new DaoFactoryImpl();
+            instance = new DaoFactoryJdbcImpl();
         }
         return instance;
     }
@@ -47,16 +43,17 @@ public final class DaoFactoryImpl implements DaoFactory {
     @Override
     public EntityDao<Line> getLineDao() {
         if (lineEntityDao == null) {
-            lineEntityDao = new LineDaoHibernate(factory);
+            lineEntityDao = new LineDaoJdbc();
         }
         return lineEntityDao;
     }
 
     @Override
-    public EntityDao<Line> getLineDaoJdbc() {
-        if (lineEntityDao == null) {
-            lineEntityDao = new LineDaoJdbc(factory);
+    public void closeConnection() {
+        try {
+            this.getConnection().close();
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage());
         }
-        return lineEntityDao;
     }
 }

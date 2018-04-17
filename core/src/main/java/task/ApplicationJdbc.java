@@ -7,15 +7,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import org.h2.tools.RunScript;
-import task.dao.impl.DaoFactoryImpl;
+import task.dao.impl.DaoFactoryJdbcImpl;
 import task.model.Line;
 import task.service.ParseFile;
 
 public class ApplicationJdbc {
 
     public static void main(String[] args) {
-        DaoFactoryImpl factory = DaoFactoryImpl.getInstance();
-        Connection connection = factory.getConnection();
+        DaoFactoryJdbcImpl instance = DaoFactoryJdbcImpl.getInstance();
+        Connection connection = instance.getConnection();
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         try (InputStream stream = classLoader.getResourceAsStream("sql/init.sql");
                 InputStreamReader reader = new InputStreamReader(stream)) {
@@ -24,7 +24,8 @@ public class ApplicationJdbc {
             e.printStackTrace();
         }
         List<Line> lines = new ParseFile().openFile();
-        factory.getLineDaoJdbc().addAllLines(lines);
+        instance.getLineDao().addAllLines(lines);
+        instance.closeConnection();
     }
 
 }

@@ -31,6 +31,10 @@ public class Line {
     @Column(name = "average_word_length")
     private Integer averageWordLength;
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }

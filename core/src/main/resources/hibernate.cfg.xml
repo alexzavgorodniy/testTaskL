@@ -13,5 +13,7 @@
         <property name="hbm2ddl.auto">create</property>
 
         <mapping class="task.model.Line"/>
+        <!--<mapping class="task.dao.impl.LineDaoHibernate"/>-->
+
     </session-factory>
 </hibernate-configuration>

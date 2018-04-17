@@ -1,12 +1,12 @@
 package task.dao;
 
-import java.sql.Connection;
 import task.model.Line;
 
-public interface DaoFactory {
+public interface DaoFactory<T> {
 
-    Connection getConnection();
+    T getConnection();
 
     EntityDao<Line> getLineDao();
-    EntityDao<Line> getLineDaoJdbc();
+
+    void closeConnection();
 }
