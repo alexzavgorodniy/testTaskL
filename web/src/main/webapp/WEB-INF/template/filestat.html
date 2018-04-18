@@ -14,7 +14,7 @@
 <header>
   <img th:src="@{/static/img/logo.jpg}" class="logo header-logo" alt="logo">
   <div class="header">
-    <h3>List of read files in all nested directories</h3>
+    <h3 th:text="${file.path}"></h3>
   </div>
 </header>
 <main class="table-responsive table-width">
@@ -22,21 +22,28 @@
     <thead>
     <tr>
       <th>Number by order</th>
-      <th>File name</th>
-      <th>Number of lines</th>
+      <th>Line from file</th>
+      <th>Longest word</th>
+      <th>Shortest word</th>
+      <th>Line length</th>
+      <th>Average word length</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="readFileDto : ${readFileDtos}">
-      <td th:text="${readFileDto.id}"></td>
-      <td style="text-align: left"><a th:href="@{'/filestat/'+${readFileDto.id}}" th:text="${readFileDto.name}"></a></td>
-      <td th:text="${readFileDto.lineCount}"></td>
+    <tr th:each="lineDto : ${lineDtos}">
+      <td th:text="${lineDto.id}"></td>
+      <td th:text="${lineDto.title}"></td>
+      <td th:text="${lineDto.longestWord}"></td>
+      <td th:text="${lineDto.shortestWord}"></td>
+      <td th:text="${lineDto.lineLength}"></td>
+      <td th:text="${lineDto.averageWordLength}"></td>
     </tr>
     </tbody>
   </table>
 </main>
+
+
 <script th:src="@{/static/lib/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/static/lib/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
-<!--href="filestat.html"-->

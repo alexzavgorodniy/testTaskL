@@ -7,7 +7,7 @@ class LineStatistics {
     Line lineStatistics(Line lineOfText) {
         Integer lineLength = 0;
         Integer longestWord = 0;
-        Integer shortestWord = 100;
+        Integer shortestWord = Integer.MAX_VALUE;
         String[] words = lineOfText.getTitle().split("[^a-zA-Z\']");
         for (String word : words) {
             if (word.length() == 0) {
@@ -22,9 +22,9 @@ class LineStatistics {
             }
         }
         lineOfText.setLongestWord(longestWord);
-        lineOfText.setShortestWord(shortestWord);
+        lineOfText.setShortestWord(shortestWord == Integer.MAX_VALUE ? 0 : shortestWord);
         lineOfText.setLineLength(lineOfText.getTitle().length());
-        lineOfText.setAverageWordLength(lineLength / words.length);
+        lineOfText.setAverageWordLength(lineLength == 0 ? 0 : lineLength / words.length);
         return lineOfText;
     }
 }

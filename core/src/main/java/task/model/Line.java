@@ -2,9 +2,12 @@ package task.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +19,7 @@ public class Line {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "title")
+    @Column(name = "title", length = 600000)
     private String title;
 
     @Column(name = "longest_word")
@@ -30,6 +33,21 @@ public class Line {
 
     @Column(name = "average_word_length")
     private Integer averageWordLength;
+
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "readfile_id")
+    private ReadFile readfile;*/
+
+    @Column(name="readfile_id")
+    private Integer readfileId;
+
+    public Integer getReadfileId() {
+        return readfileId;
+    }
+
+    public void setReadfileId(Integer readfileId) {
+        this.readfileId = readfileId;
+    }
 
     public Integer getId() {
         return id;
@@ -78,4 +96,12 @@ public class Line {
     public void setAverageWordLength(Integer averageWordLength) {
         this.averageWordLength = averageWordLength;
     }
+/*
+    public ReadFile getReadfile() {
+        return readfile;
+    }
+
+    public void setReadfile(ReadFile readfile) {
+        this.readfile = readfile;
+    }*/
 }

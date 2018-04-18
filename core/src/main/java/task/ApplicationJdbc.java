@@ -24,7 +24,7 @@ public class ApplicationJdbc {
             e.printStackTrace();
         }
         List<Line> lines = new ParseFile().openFile();
-        instance.getLineDao().addAllLines(lines);
+        instance.getLineDao().addAllEntities(lines);
         instance.closeConnection();
     }
 

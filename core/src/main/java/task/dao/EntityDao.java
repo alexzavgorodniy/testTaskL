@@ -6,5 +6,7 @@ public interface EntityDao<T> {
 
     List<T> findAll();
 
-    void addAllLines(List<T> lines);
+    void addAllEntities(List<T> entity);
+
+    T findOneByFileId(Integer id);
 }

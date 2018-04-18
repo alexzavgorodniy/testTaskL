@@ -46,7 +46,7 @@ public class LineDaoJdbc implements EntityDao<Line> {
     }
 
     @Override
-    public void addAllLines(List<Line> lines) {
+    public void addAllEntities(List<Line> lines) {
         Connection connection = DaoFactoryJdbcImpl.getInstance().getConnection();
         try (PreparedStatement statementInsert = connection.prepareStatement(
                 "INSERT INTO lines (title, longest_word, shortest_word, line_length, average_word_length) VALUES(?, ?, ?, ?, ?)")) {
@@ -61,5 +61,10 @@ public class LineDaoJdbc implements EntityDao<Line> {
         } catch (SQLException e) {
             throw new DaoException(e.getMessage());
         }
+    }
+
+    @Override
+    public Line findOneByFileId(Integer id) {
+        return null;
     }
 }
